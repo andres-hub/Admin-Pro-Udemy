@@ -5,6 +5,8 @@ import { ProgressComponent } from './progress/progress.component';
 import { Graficas1Component } from './graficas1/graficas1.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { PromesasComponent } from './promesas/promesas.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 
 
@@ -13,10 +15,12 @@ const pagesRoutes: Routes=[
         path: '',
         component:PagesComponent,
         children:[
-            {path:'progress', component: ProgressComponent},
-            {path: 'graficas1', component:Graficas1Component},
-            {path: 'account-settings', component: AccountSettingsComponent},
-            {path: 'dashboard', component: DashboardComponent},
+            {path: 'dashboard', component: DashboardComponent,data:{titulo: 'Dashboard', meta:'Aqui se pone el meta'}},
+            {path:'progress', component: ProgressComponent,  data:{titulo: 'Progress', meta:'Aqui se pone el meta'}},
+            {path: 'graficas1', component: Graficas1Component,data :{titulo: 'Gráficas', meta:'Aqui se pone el meta'}},
+            {path: 'promesas', component: PromesasComponent, data:{titulo: 'Promesas', meta:'Aqui se pone el meta'}},
+            {path: 'rxjs', component: RxjsComponent, data:{titulo: 'Rxjs', meta:'Aqui se pone el meta'}},
+            {path: 'account-settings', component: AccountSettingsComponent, data:{titulo: 'Ajustes del Tema', meta:'Aqui se pone el meta'}},
             {path:'',redirectTo:'/dashboard', pathMatch:'full'}
         ]
     }
