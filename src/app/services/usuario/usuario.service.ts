@@ -108,15 +108,18 @@ export class UsuarioService {
     return this.http.post(url,usuario)
     .pipe(
       map((resp: any) =>{
+
         Swal.fire({
           title: 'Usuario creado!',
           text: usuario.email,
           icon: 'success',
           confirmButtonText: 'Ok'
-        })
-        //swal('Usuario creado', usuario.email, 'success');
+        });
+
         return resp.usuario;
+
       })
+
     );
 
    }
