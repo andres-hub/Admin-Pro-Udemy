@@ -1,6 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { URL_SERVICOS } from '../config/config';
-import { switchMap } from 'rxjs/operators';
 
 @Pipe({
   name: 'imagen'
