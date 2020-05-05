@@ -16,9 +16,46 @@ export class UsuarioService {
   token:string;
   menu: any = [];
 
-  constructor( public http: HttpClient, public router:Router, public _subirArchivoService: SubirArchivoService) {
+  constructor( 
+    public http: HttpClient, 
+    public router:Router, 
+    public _subirArchivoService: SubirArchivoService
+    ) {
 
     this.cargarStorage();
+
+   }
+
+   renuevaToken(){
+
+    let url = URL_SERVICOS + '/login/renuevatoken';
+    url += '?token=' + this.token;
+
+    return this.http.get(url)
+    .pipe(
+      map((resp:any) => {
+
+      this.token = resp.token;
+      localStorage.setItem('token', this.token);
+
+      return true;
+
+      }),
+      catchError((err: HttpErrorResponse) =>{
+
+        this.router.navigate(['/login']);
+        Swal.fire({
+          title: '¡No se puedo renovar token!',
+          text: 'No fue posible renovar token',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        })
+        
+        return throwError(err);
+
+      })
+
+    );
 
    }
 
